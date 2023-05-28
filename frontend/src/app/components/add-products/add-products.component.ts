@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ProductService } from '../../product.service';
 
 @Component({
   selector: 'app-add-products',
@@ -11,7 +12,7 @@ export class AddProductsComponent implements OnInit {
   fileToUpload: File | null = null;
 
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private productService: ProductService) { }
 
   ngOnInit() {
     this.productForm = this.formBuilder.group({
@@ -28,6 +29,17 @@ export class AddProductsComponent implements OnInit {
   onSubmit() {
     this.productForm.value.image = this.fileToUpload;
     console.log(this.productForm.value);
-   
+    const productData = this.productForm.value;
+    this.productService.addProduct(productData).subscribe(
+      (response) => {
+        console.log('Product created successfully:', response);
+        // Reset the form
+        this.productForm.reset();
+      },
+      (error) => {
+        console.error('Failed to create product:', error);
+      }
+    );
   }
+
 }
