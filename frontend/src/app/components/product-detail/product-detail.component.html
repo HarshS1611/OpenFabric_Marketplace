@@ -1,0 +1,9 @@
+<p>product-detail works!</p>
+<div *ngIf="product">
+    <h2>{{ product.name }}</h2>
+    <p><strong>Price:</strong> {{ product.price }}</p>
+    <p><strong>Description:</strong> {{ product.description }}</p>
+    <p><strong>Category:</strong> {{ product.category }}</p>
+    <button (click)="deleteProduct()" class="btn btn-danger">Delete</button>
+    <button (click)="updateProductDetail(product._id)"  class="btn btn-primary">Update Details</button>
+</div>

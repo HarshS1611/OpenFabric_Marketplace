@@ -27,7 +27,7 @@ export class ProductService {
 
   updateProduct(id: string, product: Product): Observable<Product> {
     const headers = this.getHeaders();
-    return this.http.put<Product>(`${this.apiUrl}/${id}`, product, { headers });
+    return this.http.patch<Product>(`${this.apiUrl}/${id}`, product, { headers });
   }
 
   deleteProduct(id: string): Observable<void> {

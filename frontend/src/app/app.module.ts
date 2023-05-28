@@ -8,6 +8,11 @@ import { AddProductsComponent } from './components/add-products/add-products.com
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ReactiveFormsModule,FormsModule} from '@angular/forms';
 import {SignupComponent} from './components/auth/signup/signup.component';
+import { SigninComponent } from './components/auth/signin/signin.component';
+import { HomeComponent } from './components/home/home.component';
+import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { ModifyProductComponent } from './components/modify-product/modify-product.component';
+
 
 @NgModule({
   declarations: [
@@ -16,6 +21,10 @@ import {SignupComponent} from './components/auth/signup/signup.component';
     AddProductsComponent,
     SignupComponent,
     NavbarComponent,
+    SigninComponent,
+    HomeComponent,
+    ProductDetailComponent,
+    ModifyProductComponent,
   ],
   imports: [
     BrowserModule,

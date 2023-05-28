@@ -1,4 +1,5 @@
-<div class="container mt-5">
+<!-- <div class="container mt-5">
+
 
     <h3 class="text-center">Products</h3>
     <table>
@@ -19,4 +20,26 @@
     </table>
 
     <div *ngIf="products.length === 0">No products available</div>
+</div> -->
+
+<div class="container ">
+    <h3 class="text-center"> Products </h3>
+
+    <div class="grid text-center" *ngFor="let product of products">
+
+        <div class="g-col-6">
+            <div class="card  my-5" style="width: 18rem">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{product.name}}</h5>
+                    <p class="card-text">{{product.description}}</p>
+                    <p class="card-text">{{product.price}}</p>
+                    <p>{{product.category}}</p>
+                    <a (click)="viewProductDetail(product._id)" class="btn btn-primary">View Details</a>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
 </div>
