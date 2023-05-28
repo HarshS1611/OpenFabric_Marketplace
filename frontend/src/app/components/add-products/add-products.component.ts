@@ -1,36 +1,33 @@
-import { Component } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-products',
   templateUrl: './add-products.component.html',
   styleUrls: ['./add-products.component.css']
 })
-export class AddProductsComponent {
-  productForm : FormGroup;
+export class AddProductsComponent implements OnInit {
+  productForm!: FormGroup;
+  fileToUpload: File | null = null;
 
-  constructor(
-    public formBuilder: FormBuilder,
-  ) { 
+
+  constructor(private formBuilder: FormBuilder) { }
+
+  ngOnInit() {
     this.productForm = this.formBuilder.group({
-      name: [''],
-      price: [''],
-      description: [''],
-      imageUrl: ['']
-    })
+      pname: ['', Validators.required],
+      price: ['', [Validators.required]],
+      description: ['', Validators.required],
+      pimage: ['', Validators.required],
+    });
   }
- 
-  ngOnInit() { }
- 
-  onSubmit(): any {
-    console.log(this.productForm.value);
-    // this.crudService.AddBook(this.productForm.value)
-    // .subscribe(() => {
-    //     console.log('Data added successfully!')
-    //     this.ngZone.run(() => this.router.navigateByUrl('/books-list'))
-    //   }, (err) => {
-    //     console.log(err);
-    // });
-  }
+  handleFileInput(files: FileList) {
+    this.fileToUpload = files.item(0);
+}
 
+  onSubmit() {
+    this.productForm.value.image = this.fileToUpload;
+    console.log(this.productForm.value);
+   
+  }
 }
