@@ -7,7 +7,7 @@
           <div class="card-body">
             <h5 class="card-title"><b>Product Name : </b>{{ product.name }}</h5>
             <p class="card-text"><b>Product Description :</b>{{ product.description | slice:0:100 }}{{ product.description.length > 100 ? '...' : '' }}</p>
-            <p class="card-text"><b>Product Price :</b>{{ product.price }}</p>
+            <p class="card-text"><b>Product Price :</b> $ {{ product.price }} USD</p>
             <p><b>Product Category :</b>{{ product.category }}</p>
             <a (click)="viewProductDetail(product._id)" class="btn btn-primary">View Details</a>
           </div>
