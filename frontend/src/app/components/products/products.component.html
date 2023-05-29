@@ -1,45 +1,18 @@
-<!-- <div class="container mt-5">
-
-
-    <h3 class="text-center">Products</h3>
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Description</th>
-            <th></th>
-        </tr>
-        <tr *ngFor="let product of products">
-            <td>{{ product.name }}</td>
-            <td>{{ product.price }}</td>
-            <td>{{ product.description }}</td>
-            <td>
-                <a routerLink="['/products', product._id]">View Details</a>
-            </td>
-        </tr>
-    </table>
-
-    <div *ngIf="products.length === 0">No products available</div>
-</div> -->
-
-<div class="container ">
-    <h3 class="text-center"> Products </h3>
-
-    <div class="grid text-center" *ngFor="let product of products">
-
-        <div class="g-col-6">
-            <div class="card  my-5" style="width: 18rem">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">{{product.name}}</h5>
-                    <p class="card-text">{{product.description}}</p>
-                    <p class="card-text">{{product.price}}</p>
-                    <p>{{product.category}}</p>
-                    <a (click)="viewProductDetail(product._id)" class="btn btn-primary">View Details</a>
-                </div>
-            </div>
+<div class="container">
+    <h3 class="text-center">Explore Products</h3>
+    <div class="row">
+      <div class="col-md-4" *ngFor="let product of products">
+        <div class="card my-3">
+          <img [src]="product.imageurl" class="card-img-top" alt="..." height="250px">
+          <div class="card-body">
+            <h5 class="card-title"><b>Product Name : </b>{{ product.name }}</h5>
+            <p class="card-text"><b>Product Description :</b>{{ product.description | slice:0:100 }}{{ product.description.length > 100 ? '...' : '' }}</p>
+            <p class="card-text"><b>Product Price :</b>{{ product.price }}</p>
+            <p><b>Product Category :</b>{{ product.category }}</p>
+            <a (click)="viewProductDetail(product._id)" class="btn btn-primary">View Details</a>
+          </div>
         </div>
-
-
+      </div>
     </div>
-</div>
+  </div>
+  

@@ -1,9 +1,28 @@
-<p>product-detail works!</p>
-<div *ngIf="product">
-    <h2>{{ product.name }}</h2>
-    <p><strong>Price:</strong> {{ product.price }}</p>
-    <p><strong>Description:</strong> {{ product.description }}</p>
-    <p><strong>Category:</strong> {{ product.category }}</p>
-    <button (click)="deleteProduct()" class="btn btn-danger">Delete</button>
-    <button (click)="updateProductDetail(product._id)"  class="btn btn-primary">Update Details</button>
-</div>
+<div class="container">
+    <h3 class="text-center mt-5">Product Details</h3>
+    <div class="row my-5">
+      <div class="col-lg-4">
+        <img [src]="product.imageurl" class="img-fluid" alt="Product Image">
+      </div>
+      <div class="col-lg-8">
+        <h2>{{ product.name }}</h2>
+        <p>Description : {{ product.description }}</p>
+        <p>Price: {{ product.price }}</p>
+        <p>Category: {{ product.category }}</p>
+        <div class="d-flex justify-content-between">
+          <button class="btn btn-primary">Add to Cart</button>
+          <div>
+            <a (click)="updateProductDetail(product._id)" class="btn btn-outline-primary mx-5" >
+              <i class="fas fa-edit"></i> Update
+            </a>
+            <a (click)="deleteProduct()" class="btn btn-outline-danger">
+              <i class="fas fa-trash-alt"></i> Delete
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <app-products></app-products>
+  </div>
+  

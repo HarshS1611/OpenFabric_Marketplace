@@ -7,7 +7,7 @@ import { User } from './User';
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:5000/user'; // Replace with your API endpoint URL
+  private apiUrl = 'https://products-backend-l8zh.onrender.com/user'; // Replace with your API endpoint URL
 
   constructor(private http: HttpClient) {}
 
