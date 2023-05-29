@@ -2,6 +2,8 @@
 
 # Part 1: Angular (Front-end)
 
+# Demo User Crdentials : email - ab@gmail.com : password -  123
+
 ## 1.1 Create a simple Angular application
 
 **Objective**: Assess the candidate's familiarity with the Angular framework and CLI.
