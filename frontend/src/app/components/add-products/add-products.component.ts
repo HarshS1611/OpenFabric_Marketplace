@@ -9,7 +9,6 @@ import { ProductService } from '../../product.service';
 })
 export class AddProductsComponent implements OnInit {
   productForm!: FormGroup;
-  //fileToUpload: File | null = null;
   selectedImage!: string | ArrayBuffer | null;
 
 
@@ -21,15 +20,17 @@ export class AddProductsComponent implements OnInit {
       price: ['', [Validators.required]],
       description: ['', Validators.required],
       category: ['', Validators.required],
-      imageurl: ['', Validators.required],
     });
   }
+
   onFileSelected(event: Event): void {
     const inputElement = event.target as HTMLInputElement;
     const file = inputElement.files?.[0];
+    console.log(file);
     if (file) {
       this.previewImage(file);
     }
+    
   }
   previewImage(file: File): void {
     const reader = new FileReader();

@@ -20,22 +20,25 @@ export const getProductbyId = async (req, res) => {
     if (product) {
       res.json(product);
     } else {
-      res.status(404).json({ error: 'Product not found' });
+      res.status(404).json({ error: "Product not found" });
     }
   } catch (error) {
-    res.status(500).json({ error: 'Failed to fetch product details' });
+    res.status(500).json({ error: "Failed to fetch product details" });
   }
 };
 
 export const createProduct = async (req, res) => {
   try {
     const product = req.body;
-    const imageurl = req.file;
-    const productDetail = new Product({ ...product,imageurl:imageurl.filename , creator: req.userId, createdAt: new Date().toISOString() });
+    const productDetail = new Product({
+      ...product,
+      creator: req.userId,
+      createdAt: new Date().toISOString(),
+    });
     const newProduct = await productDetail.save();
     res.status(201).json(newProduct);
   } catch (error) {
-    res.status(500).json({ error: 'Failed to create product' });
+    res.status(500).json({ error: "Failed to create product" });
   }
 };
 
@@ -43,7 +46,7 @@ export const updateProduct = async (req, res) => {
   try {
     const { id } = req.params;
 
-    const { name , price, description,creator, category, imageurl } = req.body;
+    const { name, price, description, creator, category, imageurl } = req.body;
 
     if (!mongoose.Types.ObjectId.isValid(id))
       return res.status(404).send(`No product with id: ${id}`);
