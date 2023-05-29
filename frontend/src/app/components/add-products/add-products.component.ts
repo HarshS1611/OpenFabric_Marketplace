@@ -9,25 +9,38 @@ import { ProductService } from '../../product.service';
 })
 export class AddProductsComponent implements OnInit {
   productForm!: FormGroup;
-  fileToUpload: File | null = null;
+  //fileToUpload: File | null = null;
+  selectedImage!: string | ArrayBuffer | null;
 
 
   constructor(private formBuilder: FormBuilder, private productService: ProductService) { }
 
   ngOnInit() {
     this.productForm = this.formBuilder.group({
-      pname: ['', Validators.required],
+      name: ['', Validators.required],
       price: ['', [Validators.required]],
       description: ['', Validators.required],
-      pimage: ['', Validators.required],
+      category: ['', Validators.required],
+      imageurl: ['', Validators.required],
     });
   }
-  handleFileInput(files: FileList) {
-    this.fileToUpload = files.item(0);
-}
+  onFileSelected(event: Event): void {
+    const inputElement = event.target as HTMLInputElement;
+    const file = inputElement.files?.[0];
+    if (file) {
+      this.previewImage(file);
+    }
+  }
+  previewImage(file: File): void {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      this.selectedImage = e.target?.result as string;
+    };
+    reader.readAsDataURL(file);
+  }
 
   onSubmit() {
-    this.productForm.value.image = this.fileToUpload;
+    this.productForm.value.imageurl = this.selectedImage;
     console.log(this.productForm.value);
     const productData = this.productForm.value;
     this.productService.addProduct(productData).subscribe(

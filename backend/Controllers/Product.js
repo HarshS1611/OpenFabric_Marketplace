@@ -30,7 +30,8 @@ export const getProductbyId = async (req, res) => {
 export const createProduct = async (req, res) => {
   try {
     const product = req.body;
-    const productDetail = new Product({ ...product, creator: req.userId, createdAt: new Date().toISOString() });
+    const imageurl = req.file;
+    const productDetail = new Product({ ...product,imageurl:imageurl.filename , creator: req.userId, createdAt: new Date().toISOString() });
     const newProduct = await productDetail.save();
     res.status(201).json(newProduct);
   } catch (error) {

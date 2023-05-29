@@ -1,0 +1,21 @@
+.container{
+    color: white;
+}
+.container .navbar-brand{
+    color: white;
+}
+.container .nav-active{
+    color: white;
+}
+.container .nav-link{
+    color: white;
+}
+.btn{
+    background-color: #242424;
+    color: white;
+    border-radius: 5px;
+    border: 1px solid white;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 16px;
+}
