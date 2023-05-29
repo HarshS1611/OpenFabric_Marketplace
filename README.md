@@ -2,7 +2,7 @@
 
 # Part 1: Angular (Front-end)
 
-# Demo User Credentials : email - ab@gmail.com : password -  123
+## Demo User Credentials : email - ab@gmail.com : password -  123
 
 ## 1.1 Create a simple Angular application
 
