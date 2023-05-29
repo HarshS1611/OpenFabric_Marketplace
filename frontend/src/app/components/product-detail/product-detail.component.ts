@@ -36,7 +36,7 @@ export class ProductDetailComponent implements OnInit {
     const productId = this.route.snapshot.paramMap.get('id');
     this.productId = productId !== null ? productId : '';
     const confirmDelete = confirm('Are you sure you want to delete this product?');
-    if (!confirmDelete) {
+    if (confirmDelete) {
     this.productService.deleteProduct(this.productId).subscribe(
       () => {
         console.log('Product deleted successfully');
