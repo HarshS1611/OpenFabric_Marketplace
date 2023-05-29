@@ -1,25 +1,34 @@
-
 <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
-    <div class="container">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-        <a class="navbar-brand" routerLink="/">OpenFabric Marketplace</a>
-        <ul class="container navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item mx-5">
-            <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
-          </li>
-          <li class="nav-item mx-5">
-            <a class="nav-link active" aria-current="page" routerLink="/products">Products</a>
-          </li>
-          <li class="nav-item mx-5">
-            <a class="nav-link active" aria-current="page" routerLink="/add">Add Product</a>
-          </li>
-        </ul>
-          <a class="nav-link active" aria-current="page" routerLink="/signin">
-          <button class="btn " type="submit">Login</button>
-        </a>
-      </div>
+  <div class="container">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
+      aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <a class="navbar-brand" routerLink="/">OpenFabric Marketplace</a>
+      <ul class="container navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item mx-5">
+          <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
+        </li>
+        <li class="nav-item mx-5">
+          <a class="nav-link active" aria-current="page" routerLink="/products">Products</a>
+        </li>
+        <li class="nav-item mx-5">
+          <a class="nav-link active" aria-current="page" routerLink="/add">Add Product</a>
+        </li>
+      </ul>
+      <a *ngIf="!isLoggedIn" class="nav-link active" aria-current="page" routerLink="/signin">
+        <button class="btn" type="submit">Login</button>
+      </a>
+
+      <a *ngIf="isLoggedIn" class="nav-link" href="#">
+        <div class="d-flex" *ngIf="userDetails">
+          <p class="text-white mx-3">Welcome {{userDetails.result.name}}</p>
+          <button class="btn" type="submit" (click)="logout()">Logout</button>
+        </div>
+       
+      </a>
+
     </div>
-  </nav>
+  </div>
+</nav>

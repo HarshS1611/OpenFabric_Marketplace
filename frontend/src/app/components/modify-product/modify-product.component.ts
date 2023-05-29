@@ -46,10 +46,12 @@ export class ModifyProductComponent implements OnInit {
     this.productService.updateProduct(this.productId, this.product).subscribe(
       () => {
         console.log('Product updated successfully');
+        alert('Product updated successfully');
         this.router.navigate(['/products']);
       },
       (error) => {
         console.error('Error updating product:', error);
+        alert(error.error.message)
       }
     );
   }

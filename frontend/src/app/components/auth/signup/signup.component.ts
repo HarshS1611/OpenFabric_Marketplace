@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../../auth.service';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -10,7 +10,9 @@ import { AuthService } from '../../../auth.service';
 export class SignupComponent implements OnInit {
   signupForm!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService) { }
+  constructor(private formBuilder: FormBuilder,
+    private router: Router,
+    private authService: AuthService) { }
 
   ngOnInit() {
     this.signupForm = this.formBuilder.group({
@@ -29,10 +31,14 @@ export class SignupComponent implements OnInit {
         // Handle successful signup
         console.log('Signup successful:', response);
         localStorage.setItem("userProfile", JSON.stringify(response));
+        this.authService.setIsLoggedIn(true);
+        alert('Signin successful');
+        this.router.navigate(['/']);
       },
       (error) => {
         // Handle signup error
         console.error('Signup failed:', error);
+        alert(error.error.message)
       }
     );
   }
