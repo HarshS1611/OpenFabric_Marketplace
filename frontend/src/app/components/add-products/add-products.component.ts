@@ -47,11 +47,13 @@ export class AddProductsComponent implements OnInit {
     this.productService.addProduct(productData).subscribe(
       (response) => {
         console.log('Product created successfully:', response);
+        alert('Product created successfully');
         // Reset the form
         this.productForm.reset();
       },
       (error) => {
         console.error('Failed to create product:', error);
+        alert(error.error.message);
       }
     );
   }
