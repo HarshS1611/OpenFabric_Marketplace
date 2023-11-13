@@ -1,6 +1,5 @@
-# OpenFabric_Task
+# OpenFabric_Marketplace
 
-# Part 1: Angular (Front-end)
 
 ## Demo User Credentials : email - ab@gmail.com : password -  123
 
